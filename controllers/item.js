@@ -2,7 +2,8 @@ const Item = require('../models/item');
 
 module.exports = {
   index,
-  tagIndex
+  tagIndex,
+  findItemById
 };
 
 function index(req, res) {
@@ -14,5 +15,5 @@ function tagIndex(req, res) {
 }
 
 function findItemById(req, res) {
-    Item.findById({})
+    Item.findById(req.id).then(item => res.json(item))
 }
